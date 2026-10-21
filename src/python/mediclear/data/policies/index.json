@@ -1,0 +1,27 @@
+{
+  "default_year": 2026,
+  "versions": [
+    {
+      "year": 2026,
+      "version": "2026.1",
+      "label": "2026 年度政策",
+      "status": "current",
+      "files": [
+        "base.json",
+        "cities.json",
+        "extended.json"
+      ]
+    },
+    {
+      "year": 2025,
+      "version": "2025.1",
+      "label": "2025 年度政策（历史版本）",
+      "status": "archived",
+      "files": [
+        "base.json",
+        "cities.json",
+        "extended.json"
+      ]
+    }
+  ]
+}

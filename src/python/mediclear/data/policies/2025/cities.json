@@ -1,0 +1,1608 @@
+{
+  "meta": {
+    "version": "2025.1",
+    "year": 2025,
+    "city_count": 14,
+    "source": "示例数据（Demo 演示用，非官方口径）"
+  },
+  "cities": {
+    "beijing": {
+      "name": "北京市",
+      "province": "北京市",
+      "tier": "一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1800,
+          "max_reimburse": 19000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1300,
+          "max_reimburse": 285000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 30000,
+              "rate": 0.89,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 30000,
+              "rate": 0.84,
+              "location": "三级医院"
+            },
+            {
+              "min": 0,
+              "max": 30000,
+              "rate": 0.86,
+              "location": "二级医院"
+            },
+            {
+              "min": 30000,
+              "max": 40000,
+              "rate": 0.93,
+              "location": "一级医院"
+            },
+            {
+              "min": 30000,
+              "max": 40000,
+              "rate": 0.89,
+              "location": "三级医院"
+            },
+            {
+              "min": 30000,
+              "max": 40000,
+              "rate": 0.91,
+              "location": "二级医院"
+            },
+            {
+              "min": 40000,
+              "max": 300000,
+              "rate": 0.97,
+              "location": "一级医院"
+            },
+            {
+              "min": 40000,
+              "max": 300000,
+              "rate": 0.94,
+              "location": "三级医院"
+            },
+            {
+              "min": 40000,
+              "max": 300000,
+              "rate": 0.96,
+              "location": "二级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 100,
+          "max_reimburse": 2000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.34,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1300,
+          "max_reimburse": 190000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.74,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.69,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.64,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "shanghai": {
+      "name": "上海市",
+      "province": "上海市",
+      "tier": "一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 500,
+          "max_reimburse": 23000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 25000,
+              "rate": 0.64,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 25000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 25000,
+              "rate": 0.54,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1500,
+          "max_reimburse": 332000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 350000,
+              "rate": 0.84,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 350000,
+              "rate": 0.79,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 350000,
+              "rate": 0.74,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 500,
+          "max_reimburse": 4000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 5000,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 5000,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 5000,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1200,
+          "max_reimburse": 237000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.59,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "guangzhou": {
+      "name": "广州市",
+      "province": "广东省",
+      "tier": "一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1000,
+          "max_reimburse": 19000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.74,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.54,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1600,
+          "max_reimburse": 285000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 300000,
+              "rate": 0.89,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 300000,
+              "rate": 0.84,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 300000,
+              "rate": 0.79,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 1000,
+          "max_reimburse": 2000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.54,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.44,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.34,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1500,
+          "max_reimburse": 190000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.74,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.69,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.64,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "shenzhen": {
+      "name": "深圳市",
+      "province": "广东省",
+      "tier": "一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 0,
+          "max_reimburse": 14000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 15000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 15000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 15000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 300,
+          "max_reimburse": 342000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 360000,
+              "rate": 0.84,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 360000,
+              "rate": 0.79,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 360000,
+              "rate": 0.74,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 100,
+          "max_reimburse": 1000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 2000,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 2000,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 2000,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 190000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.59,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "hangzhou": {
+      "name": "杭州市",
+      "province": "浙江省",
+      "tier": "新一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1000,
+          "max_reimburse": 19000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.71,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.61,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.51,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1200,
+          "max_reimburse": 266000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 280000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 280000,
+              "rate": 0.81,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 280000,
+              "rate": 0.77,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 300,
+          "max_reimburse": 3000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 4000,
+              "rate": 0.54,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 4000,
+              "rate": 0.44,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 4000,
+              "rate": 0.34,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 171000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.71,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.67,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.61,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "nanjing": {
+      "name": "南京市",
+      "province": "江苏省",
+      "tier": "新一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1200,
+          "max_reimburse": 20000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 22000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 22000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 22000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 247000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 260000,
+              "rate": 0.89,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 260000,
+              "rate": 0.84,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 260000,
+              "rate": 0.79,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 500,
+          "max_reimburse": 3000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 900,
+          "max_reimburse": 180000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 190000,
+              "rate": 0.74,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 190000,
+              "rate": 0.67,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 190000,
+              "rate": 0.61,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "wuhan": {
+      "name": "武汉市",
+      "province": "湖北省",
+      "tier": "新一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 800,
+          "max_reimburse": 23000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 25000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 25000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 25000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1200,
+          "max_reimburse": 228000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 30000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 30000,
+              "rate": 0.81,
+              "location": "三级医院"
+            },
+            {
+              "min": 0,
+              "max": 30000,
+              "rate": 0.84,
+              "location": "二级医院"
+            },
+            {
+              "min": 30000,
+              "max": 80000,
+              "rate": 0.91,
+              "location": "一级医院"
+            },
+            {
+              "min": 30000,
+              "max": 80000,
+              "rate": 0.87,
+              "location": "三级医院"
+            },
+            {
+              "min": 30000,
+              "max": 80000,
+              "rate": 0.89,
+              "location": "二级医院"
+            },
+            {
+              "min": 80000,
+              "max": 240000,
+              "rate": 0.95,
+              "location": "一级医院"
+            },
+            {
+              "min": 80000,
+              "max": 240000,
+              "rate": 0.91,
+              "location": "三级医院"
+            },
+            {
+              "min": 80000,
+              "max": 240000,
+              "rate": 0.93,
+              "location": "二级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 400,
+          "max_reimburse": 3000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 4000,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 4000,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 4000,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 171000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.59,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "chengdu": {
+      "name": "成都市",
+      "province": "四川省",
+      "tier": "新一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 900,
+          "max_reimburse": 19000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.64,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.54,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 266000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 280000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 280000,
+              "rate": 0.81,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 280000,
+              "rate": 0.77,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 200,
+          "max_reimburse": 4000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 5000,
+              "rate": 0.59,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 5000,
+              "rate": 0.49,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 5000,
+              "rate": 0.39,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 800,
+          "max_reimburse": 190000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.74,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.69,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 200000,
+              "rate": 0.64,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "chongqing": {
+      "name": "重庆市",
+      "province": "重庆市",
+      "tier": "新一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1500,
+          "max_reimburse": 17000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.64,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.54,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.44,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1100,
+          "max_reimburse": 256000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 270000,
+              "rate": 0.84,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 270000,
+              "rate": 0.79,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 270000,
+              "rate": 0.74,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 300,
+          "max_reimburse": 2000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 800,
+          "max_reimburse": 161000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 170000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 170000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 170000,
+              "rate": 0.57,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "xian": {
+      "name": "西安市",
+      "province": "陕西省",
+      "tier": "新一线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1200,
+          "max_reimburse": 17000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.67,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.57,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.47,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1200,
+          "max_reimburse": 237000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.81,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.75,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 300,
+          "max_reimburse": 2000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.54,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.44,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.34,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 900,
+          "max_reimburse": 171000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.71,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.57,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "shenyang": {
+      "name": "沈阳市",
+      "province": "辽宁省",
+      "tier": "二线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1000,
+          "max_reimburse": 14000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 15000,
+              "rate": 0.64,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 15000,
+              "rate": 0.54,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 15000,
+              "rate": 0.44,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 209000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 220000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 220000,
+              "rate": 0.81,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 220000,
+              "rate": 0.75,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 200,
+          "max_reimburse": 2000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 2500,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 2500,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 2500,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 800,
+          "max_reimburse": 142000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 150000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 150000,
+              "rate": 0.61,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 150000,
+              "rate": 0.54,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "jinan": {
+      "name": "济南市",
+      "province": "山东省",
+      "tier": "二线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1200,
+          "max_reimburse": 17000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 228000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 240000,
+              "rate": 0.84,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 240000,
+              "rate": 0.79,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 240000,
+              "rate": 0.74,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 400,
+          "max_reimburse": 3000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.54,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.44,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.34,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1000,
+          "max_reimburse": 171000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.71,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.57,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "zhengzhou": {
+      "name": "郑州市",
+      "province": "河南省",
+      "tier": "二线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1500,
+          "max_reimburse": 17000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.64,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.54,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 18000,
+              "rate": 0.44,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1200,
+          "max_reimburse": 218000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 230000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 230000,
+              "rate": 0.81,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 230000,
+              "rate": 0.74,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 300,
+          "max_reimburse": 2000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.49,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.39,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3000,
+              "rate": 0.29,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 900,
+          "max_reimburse": 152000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 160000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 160000,
+              "rate": 0.61,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 160000,
+              "rate": 0.54,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    },
+    "changsha": {
+      "name": "长沙市",
+      "province": "湖南省",
+      "tier": "二线",
+      "employee": {
+        "outpatient": {
+          "deductible": 1000,
+          "max_reimburse": 19000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.69,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.59,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 20000,
+              "rate": 0.49,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 1100,
+          "max_reimburse": 237000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.87,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.81,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 250000,
+              "rate": 0.75,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      },
+      "resident": {
+        "outpatient": {
+          "deductible": 300,
+          "max_reimburse": 3000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.54,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.44,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 3500,
+              "rate": 0.34,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        },
+        "inpatient": {
+          "deductible": 900,
+          "max_reimburse": 171000,
+          "reimburse_rates": [
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.71,
+              "location": "一级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.64,
+              "location": "二级医院"
+            },
+            {
+              "min": 0,
+              "max": 180000,
+              "rate": 0.57,
+              "location": "三级医院"
+            }
+          ],
+          "default_hospital_level": "三级医院"
+        }
+      }
+    }
+  }
+}

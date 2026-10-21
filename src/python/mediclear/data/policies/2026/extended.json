@@ -1,0 +1,674 @@
+{
+  "meta": {
+    "version": "2026.1",
+    "year": 2026,
+    "updated": "2026-10-12",
+    "source": "示例数据（Demo 演示用，非官方口径）",
+    "note": "门诊慢特病、个人账户、生育保险、缴费、家庭共济等扩展政策。数值为演示用途的合理估计值。"
+  },
+  "chronic_diseases": {
+    "enabled": true,
+    "description": "门诊慢特病：经认定备案后，门诊治疗该病种的费用按专项比例报销，多数病种不设或仅设较低起付线，并有独立年度限额。",
+    "note": "慢性病（慢病）限额较低、比例适中；特殊疾病（特病）限额高、比例接近住院水平。",
+    "diseases": {
+      "hypertension": {
+        "name": "高血压",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.7,
+          "annual_quota": 3000
+        },
+        "cities": {
+          "beijing": {
+            "rate": 0.8,
+            "annual_quota": 4000
+          },
+          "shanghai": {
+            "rate": 0.75,
+            "annual_quota": 4000
+          },
+          "guangzhou": {
+            "rate": 0.8,
+            "annual_quota": 3600
+          },
+          "shenzhen": {
+            "rate": 0.8,
+            "annual_quota": 3600
+          },
+          "hangzhou": {
+            "rate": 0.75,
+            "annual_quota": 3500
+          },
+          "nanjing": {
+            "rate": 0.75,
+            "annual_quota": 3500
+          },
+          "wuhan": {
+            "rate": 0.7,
+            "annual_quota": 3000
+          },
+          "chengdu": {
+            "rate": 0.7,
+            "annual_quota": 3000
+          },
+          "chongqing": {
+            "rate": 0.7,
+            "annual_quota": 2800
+          },
+          "xian": {
+            "rate": 0.7,
+            "annual_quota": 2800
+          },
+          "shenyang": {
+            "rate": 0.65,
+            "annual_quota": 2500
+          },
+          "jinan": {
+            "rate": 0.7,
+            "annual_quota": 2800
+          },
+          "zhengzhou": {
+            "rate": 0.7,
+            "annual_quota": 2800
+          },
+          "changsha": {
+            "rate": 0.7,
+            "annual_quota": 3000
+          }
+        }
+      },
+      "diabetes": {
+        "name": "糖尿病",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.7,
+          "annual_quota": 4000
+        },
+        "cities": {
+          "beijing": {
+            "rate": 0.8,
+            "annual_quota": 5000
+          },
+          "shanghai": {
+            "rate": 0.75,
+            "annual_quota": 5000
+          },
+          "guangzhou": {
+            "rate": 0.8,
+            "annual_quota": 4800
+          },
+          "shenzhen": {
+            "rate": 0.8,
+            "annual_quota": 4800
+          },
+          "hangzhou": {
+            "rate": 0.75,
+            "annual_quota": 4500
+          },
+          "nanjing": {
+            "rate": 0.75,
+            "annual_quota": 4500
+          },
+          "wuhan": {
+            "rate": 0.7,
+            "annual_quota": 4000
+          },
+          "chengdu": {
+            "rate": 0.7,
+            "annual_quota": 4000
+          },
+          "chongqing": {
+            "rate": 0.7,
+            "annual_quota": 3600
+          },
+          "xian": {
+            "rate": 0.7,
+            "annual_quota": 3600
+          },
+          "shenyang": {
+            "rate": 0.65,
+            "annual_quota": 3200
+          },
+          "jinan": {
+            "rate": 0.7,
+            "annual_quota": 3600
+          },
+          "zhengzhou": {
+            "rate": 0.7,
+            "annual_quota": 3600
+          },
+          "changsha": {
+            "rate": 0.7,
+            "annual_quota": 4000
+          }
+        }
+      },
+      "coronary_heart_disease": {
+        "name": "冠心病",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.7,
+          "annual_quota": 4000
+        },
+        "cities": {
+          "beijing": {
+            "rate": 0.8,
+            "annual_quota": 5000
+          },
+          "shanghai": {
+            "rate": 0.75,
+            "annual_quota": 5000
+          }
+        }
+      },
+      "stroke_sequelae": {
+        "name": "脑血管病后遗症",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.7,
+          "annual_quota": 5000
+        },
+        "cities": {
+          "beijing": {
+            "rate": 0.8,
+            "annual_quota": 6000
+          },
+          "shanghai": {
+            "rate": 0.75,
+            "annual_quota": 6000
+          }
+        }
+      },
+      "copd": {
+        "name": "慢性阻塞性肺疾病",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.65,
+          "annual_quota": 3500
+        },
+        "cities": {}
+      },
+      "chronic_hepatitis_b": {
+        "name": "慢性乙型肝炎",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.7,
+          "annual_quota": 6000
+        },
+        "cities": {}
+      },
+      "rheumatoid_arthritis": {
+        "name": "类风湿关节炎",
+        "level": "慢性病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.7,
+          "annual_quota": 5000
+        },
+        "cities": {}
+      },
+      "tuberculosis": {
+        "name": "肺结核",
+        "level": "特殊疾病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.8,
+          "annual_quota": 20000
+        },
+        "cities": {}
+      },
+      "severe_mental_illness": {
+        "name": "重性精神疾病",
+        "level": "特殊疾病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.8,
+          "annual_quota": 30000
+        },
+        "cities": {}
+      },
+      "cancer_outpatient": {
+        "name": "恶性肿瘤门诊治疗（放化疗等）",
+        "level": "特殊疾病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.85,
+          "annual_quota": 150000
+        },
+        "cities": {
+          "beijing": {
+            "rate": 0.9,
+            "annual_quota": 200000
+          },
+          "shanghai": {
+            "rate": 0.85,
+            "annual_quota": 200000
+          }
+        }
+      },
+      "dialysis": {
+        "name": "尿毒症透析",
+        "level": "特殊疾病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.9,
+          "annual_quota": 200000
+        },
+        "cities": {
+          "beijing": {
+            "rate": 0.95,
+            "annual_quota": 250000
+          },
+          "shanghai": {
+            "rate": 0.9,
+            "annual_quota": 250000
+          }
+        }
+      },
+      "transplant_anti_rejection": {
+        "name": "器官移植后抗排异治疗",
+        "level": "特殊疾病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.85,
+          "annual_quota": 180000
+        },
+        "cities": {}
+      },
+      "systemic_lupus_erythematosus": {
+        "name": "系统性红斑狼疮",
+        "level": "特殊疾病",
+        "default": {
+          "deductible": 0,
+          "rate": 0.8,
+          "annual_quota": 60000
+        },
+        "cities": {}
+      }
+    }
+  },
+  "personal_account": {
+    "enabled": true,
+    "description": "职工医保个人账户：在职人员按缴费基数的一定比例计入，退休人员按定额计入；居民医保无个人账户。",
+    "employee": {
+      "active": {
+        "personal_rate": 0.02,
+        "employer_rate_to_account": 0.0,
+        "employer_rate_to_account_by_city": {
+          "beijing": 0.008,
+          "shenzhen": 0.02
+        },
+        "note": "门诊共济改革后，单位缴费原则上不再划入个人账户；个别城市仍有小幅划入。"
+      },
+      "retired": {
+        "mode": "flat",
+        "monthly_amount": 100,
+        "by_city": {
+          "beijing": 110,
+          "shanghai": 168,
+          "guangzhou": 135,
+          "shenzhen": 140,
+          "hangzhou": 120,
+          "nanjing": 118,
+          "wuhan": 105,
+          "chengdu": 100,
+          "chongqing": 95,
+          "xian": 96,
+          "shenyang": 88,
+          "jinan": 95,
+          "zhengzhou": 90,
+          "changsha": 92
+        }
+      }
+    },
+    "resident": {
+      "enabled": false,
+      "note": "居民医保不设个人账户，普通门诊按统筹基金报销。"
+    },
+    "interest_rate": 0.0,
+    "carry_over": true,
+    "note": "当年账户余额可结转下年使用，一般不可提现。"
+  },
+  "contribution": {
+    "employee": {
+      "personal_rate": 0.02,
+      "employer_rate": 0.08,
+      "maternity_rate": 0.008,
+      "maternity_merged": true,
+      "note": "生育保险已并入职工医保，由单位缴纳，个人不缴费。"
+    },
+    "resident": {
+      "mode": "annual",
+      "adult_personal": 400,
+      "adult_subsidy": 670,
+      "child_personal": 200,
+      "child_subsidy": 670,
+      "note": "居民医保按年缴费，个人缴费 + 财政补助共同构成筹资。"
+    },
+    "flexible_employment": {
+      "rate": 0.08,
+      "account_rate": 0.02,
+      "note": "灵活就业人员可自愿选择是否建立个人账户。"
+    },
+    "base_limits": {
+      "beijing": {
+        "min": 6821,
+        "max": 35811
+      },
+      "shanghai": {
+        "min": 7384,
+        "max": 36921
+      },
+      "guangzhou": {
+        "min": 5284,
+        "max": 30876
+      },
+      "shenzhen": {
+        "min": 5284,
+        "max": 30876
+      },
+      "hangzhou": {
+        "min": 4462,
+        "max": 24930
+      },
+      "nanjing": {
+        "min": 4879,
+        "max": 24396
+      },
+      "wuhan": {
+        "min": 4367,
+        "max": 21836
+      },
+      "chengdu": {
+        "min": 4511,
+        "max": 22555
+      },
+      "chongqing": {
+        "min": 4200,
+        "max": 21000
+      },
+      "xian": {
+        "min": 4293,
+        "max": 21465
+      },
+      "shenyang": {
+        "min": 4106,
+        "max": 20527
+      },
+      "jinan": {
+        "min": 4200,
+        "max": 21000
+      },
+      "zhengzhou": {
+        "min": 3832,
+        "max": 19160
+      },
+      "changsha": {
+        "min": 4027,
+        "max": 20133
+      },
+      "national": {
+        "min": 6000,
+        "max": 30000
+      }
+    }
+  },
+  "maternity": {
+    "enabled": true,
+    "merged_into_medical": true,
+    "description": "生育保险：生育医疗费用按限额内实报实销，生育津贴按单位上年度月平均工资计发。",
+    "medical": {
+      "note": "限额内按比例报销，超限额部分自付。",
+      "items": {
+        "prenatal_check": {
+          "name": "产前检查费",
+          "limit": 1400,
+          "rate": 0.8
+        },
+        "normal_delivery": {
+          "name": "顺产",
+          "limit": 3000,
+          "rate": 1.0
+        },
+        "difficult_delivery": {
+          "name": "难产",
+          "limit": 4000,
+          "rate": 1.0
+        },
+        "cesarean": {
+          "name": "剖宫产",
+          "limit": 5000,
+          "rate": 1.0
+        },
+        "multiple_birth": {
+          "name": "多胞胎",
+          "limit": 6000,
+          "rate": 1.0
+        },
+        "family_planning": {
+          "name": "计划生育手术费",
+          "limit": 800,
+          "rate": 1.0
+        }
+      },
+      "city_overrides": {
+        "beijing": {
+          "normal_delivery": {
+            "limit": 3400
+          },
+          "cesarean": {
+            "limit": 5600
+          },
+          "prenatal_check": {
+            "limit": 1600
+          }
+        },
+        "shanghai": {
+          "normal_delivery": {
+            "limit": 3600
+          },
+          "cesarean": {
+            "limit": 6000
+          },
+          "prenatal_check": {
+            "limit": 1800
+          }
+        },
+        "shenzhen": {
+          "normal_delivery": {
+            "limit": 3800
+          },
+          "cesarean": {
+            "limit": 6200
+          },
+          "prenatal_check": {
+            "limit": 2000
+          }
+        }
+      }
+    },
+    "allowance": {
+      "formula": "生育津贴 = 用人单位上年度职工月平均工资 ÷ 30 × 计发天数",
+      "base_mode": "employer_avg_wage",
+      "min_days": 98,
+      "paid_days": {
+        "normal_delivery": 98,
+        "difficult_delivery": 113,
+        "multiple_birth": 113,
+        "extra_per_extra_baby": 15,
+        "miscarriage_lt_4_months": 15,
+        "miscarriage_ge_4_months": 42,
+        "family_planning": 15
+      },
+      "local_leave_extra_days": {
+        "beijing": 30,
+        "shanghai": 30,
+        "guangzhou": 80,
+        "shenzhen": 80,
+        "hangzhou": 60,
+        "nanjing": 60,
+        "wuhan": 60,
+        "chengdu": 60,
+        "chongqing": 60,
+        "xian": 60,
+        "shenyang": 60,
+        "jinan": 60,
+        "zhengzhou": 60,
+        "changsha": 60
+      },
+      "note": "各地在法定 98 天基础上另有地方奖励假，津贴是否覆盖奖励假以当地规定为准。"
+    }
+  },
+  "household": {
+    "enabled": true,
+    "description": "职工医保个人账户家庭共济：个人账户余额可授权给已参保的配偶、父母、子女使用。",
+    "member_relations": [
+      "spouse",
+      "parent",
+      "child"
+    ],
+    "bind_limit": 6,
+    "scope": [
+      "personal_account_balance"
+    ],
+    "allowed_usage": [
+      "member_outpatient_self_pay",
+      "member_inpatient_self_pay",
+      "member_pharmacy_purchase",
+      "member_medical_device",
+      "resident_premium_payment"
+    ],
+    "not_allowed_usage": [
+      "public_fund_portion",
+      "non_insured_person",
+      "non_medical_consumption"
+    ],
+    "note": "共济仅限个人账户余额，统筹基金部分不可共济；被共济人须已参加基本医保。"
+  },
+  "multi_admission": {
+    "enabled": true,
+    "description": "同一年度内多次住院时，起付线按住院次数递减，减轻反复住院的负担。",
+    "note": "deductible_factors 按住院次序取值，超出长度后沿用最后一个系数；null 表示不设年度起付线总额上限。",
+    "default": {
+      "deductible_factors": [
+        1.0,
+        0.5,
+        0.0
+      ],
+      "annual_deductible_cap": null,
+      "reset_on_new_year": true,
+      "note": "第 1 次住院全额起付线，第 2 次减半，第 3 次起免起付线"
+    },
+    "outpatient_same_day_merged": false,
+    "city_overrides": {
+      "beijing": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "shanghai": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "guangzhou": {
+        "deductible_factors": [
+          1.0,
+          0.6,
+          0.3,
+          0.0
+        ]
+      },
+      "shenzhen": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "hangzhou": {
+        "deductible_factors": [
+          1.0,
+          0.7,
+          0.4,
+          0.0
+        ]
+      },
+      "nanjing": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "wuhan": {
+        "deductible_factors": [
+          1.0,
+          0.6,
+          0.3,
+          0.0
+        ]
+      },
+      "chengdu": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "chongqing": {
+        "deductible_factors": [
+          1.0,
+          0.6,
+          0.3,
+          0.0
+        ]
+      },
+      "xian": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "shenyang": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "jinan": {
+        "deductible_factors": [
+          1.0,
+          0.6,
+          0.0
+        ]
+      },
+      "zhengzhou": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      },
+      "changsha": {
+        "deductible_factors": [
+          1.0,
+          0.5,
+          0.0
+        ]
+      }
+    }
+  }
+}

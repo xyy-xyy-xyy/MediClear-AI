@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "version": "2026.1",
+    "year": 2026,
+    "updated": "2026-01-01",
+    "source": "示例数据（Demo 演示用，非官方口径）"
+  },
+  "insurance_types": {
+    "employee": {
+      "name": "职工医保",
+      "description": "城镇职工基本医疗保险，有个人账户"
+    },
+    "resident": {
+      "name": "居民医保",
+      "description": "城乡居民基本医疗保险，无个人账户"
+    }
+  },
+  "visit_types": {
+    "outpatient": "门诊",
+    "inpatient": "住院",
+    "emergency": "急诊"
+  },
+  "fee_categories": {
+    "class_a": {
+      "name": "甲类",
+      "description": "全额纳入报销基数，100%报销比例计算",
+      "reimburse_ratio_base": 1.0
+    },
+    "class_b": {
+      "name": "乙类",
+      "description": "部分自付后纳入报销基数，通常自付10-30%",
+      "reimburse_ratio_base": 0.8
+    },
+    "self_pay": {
+      "name": "自费",
+      "description": "完全不纳入报销，全部自己承担",
+      "reimburse_ratio_base": 0.0
+    }
+  },
+  "hospital_levels": [
+    "一级医院",
+    "二级医院",
+    "三级医院"
+  ],
+  "serious_illness": {
+    "enabled": true,
+    "deductible": 15000,
+    "reimburse_rate": 0.6,
+    "max_reimburse": 300000,
+    "description": "个人自付超过起付线的部分，由大病保险按比例报销"
+  },
+  "relocation": {
+    "备案类型": {
+      "长期驻外": {
+        "description": "异地长期居住、异地工作的人员",
+        "有效期": "长期有效",
+        "报销比例": "与参保地同等级医院一致"
+      },
+      "临时外出": {
+        "description": "出差、旅游、探亲等临时外出就医",
+        "有效期": "3-6个月",
+        "报销比例": "备案后同参保地，未备案降低10-20%"
+      },
+      "转诊转院": {
+        "description": "因病情需要转往外地医院治疗",
+        "有效期": "当次有效",
+        "报销比例": "降低5-10%"
+      }
+    },
+    "备案渠道": [
+      "国家医保服务平台APP",
+      "参保地医保经办机构窗口",
+      "参保地政务服务网",
+      "12393医保服务热线"
+    ],
+    "必备材料": [
+      "身份证原件及复印件",
+      "社会保障卡（医保卡）",
+      "异地就医备案表"
+    ]
+  }
+}
