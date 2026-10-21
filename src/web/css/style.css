@@ -299,6 +299,33 @@ body.elder .elder-label { font-size: 15px; }
 .fc-link { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--brand); }
 
 /* ==========================================================
+   任务式入口：选一件事，带你做完
+   ========================================================== */
+.section-tasks { padding-top: 34px; padding-bottom: 0; }
+.task-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.task-card {
+    position: relative; display: flex; align-items: center; gap: 14px; overflow: hidden;
+    padding: 22px 20px; border-radius: var(--r-lg); background: #fff;
+    border: 1px solid var(--line-soft); box-shadow: var(--sh-xs);
+    text-decoration: none; color: inherit;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+}
+.task-card::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: var(--grad-ai); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s;
+}
+.task-card:hover { transform: translateY(-6px); box-shadow: var(--sh-lg); }
+.task-card:hover::before { opacity: 1; }
+.tk-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 48px; height: 48px; border-radius: 14px; font-size: 24px; }
+.tk-blue { background: #d5ecfc; } .tk-cyan { background: #d5f4fb; } .tk-violet { background: #e6e0fb; }
+.tk-copy { flex: 1; min-width: 0; }
+.task-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.task-card p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+.tk-arrow { flex-shrink: 0; color: var(--brand); opacity: .55; transition: transform .25s var(--ease), opacity .25s; }
+.task-card:hover .tk-arrow { transform: translateX(4px); opacity: 1; }
+
+/* ==========================================================
    OCR 入口
    ========================================================== */
 .ocr-bar {
@@ -709,6 +736,7 @@ body.elder .elder-label { font-size: 15px; }
     .hero-cta { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-preview { max-width: 340px; width: 100%; margin: 0 auto; }
+    .task-grid { grid-template-columns: 1fr; }
     .feature-grid { grid-template-columns: repeat(2, 1fr); }
     .result-top { grid-template-columns: 1fr; }
     .donut { margin: 0 auto; }
@@ -773,7 +801,7 @@ body.elder .elder-label { font-size: 15px; }
    ========================================================== */
 @media print {
     body { background: #fff; }
-    .header, .hero, .section-features, #calculator, #bill, #about, .footer, .mobile-nav, .toast-wrap, .modal { display: none !important; }
+    .header, .hero, .section-tasks, .section-features, #calculator, #bill, #about, .footer, .mobile-nav, .toast-wrap, .modal { display: none !important; }
     #relocation { padding: 0 !important; }
     #relocation .card:first-of-type, .remind-box, .result-actions, .ocr-bar { display: none !important; }
     .checklist-card { box-shadow: none !important; border: 1px solid #ccc !important; }
