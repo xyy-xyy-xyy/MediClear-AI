@@ -405,6 +405,40 @@ body.elder .elder-label { font-size: 15px; }
 .mode-panel.active { display: block; animation: fadeIn .35s var(--ease); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
+/* 高级选项折叠（表单减法：必填只剩 城市/身份/金额） */
+.adv-box {
+    border: 1px dashed var(--line); border-radius: var(--r-md);
+    background: var(--bg-soft, #f8fafc); margin-bottom: 20px; overflow: hidden;
+}
+.adv-box summary {
+    list-style: none; cursor: pointer; padding: 11px 14px;
+    font-size: 13.5px; font-weight: 600; color: var(--text-2);
+    display: flex; align-items: center; gap: 8px; user-select: none;
+    transition: color .2s;
+}
+.adv-box summary::-webkit-details-marker { display: none; }
+.adv-box summary::before {
+    content: '▸'; font-size: 12px; color: var(--text-3); transition: transform .2s var(--ease);
+}
+.adv-box[open] summary::before { transform: rotate(90deg); }
+.adv-box summary:hover { color: var(--brand); }
+.adv-box summary small { font-weight: 400; font-size: 12px; color: var(--text-3); }
+.adv-box[open] summary { border-bottom: 1px dashed var(--line); }
+.adv-grid { padding: 16px 14px 0; margin-bottom: 0; }
+.adv-box > .form-group { padding: 0 14px 14px; margin-bottom: 0; }
+.adv-box > .form-group .ratio-sliders { margin-top: 4px; }
+.adv-box > .form-group .slider-warn { margin: 12px 0 0; }
+.adv-box > .form-group .form-hint { margin-top: 10px; }
+
+/* 结果卡交叉入口（账单分析入口并入计算器结果页） */
+.result-crosslink {
+    margin-top: 18px; padding: 12px 16px; border-radius: var(--r-md);
+    background: linear-gradient(120deg, #d5ecfc, #f2f9fe); border: 1px solid rgba(30, 148, 232, .18);
+    font-size: 13.5px; color: var(--text-2);
+}
+.result-crosslink a { color: var(--brand); font-weight: 600; text-decoration: none; margin-left: 4px; }
+.result-crosslink a:hover { text-decoration: underline; }
+
 /* 滑块 */
 .ratio-sliders { display: flex; flex-direction: column; gap: 18px; }
 .slider-label { display: flex; justify-content: space-between; font-size: 13.5px; color: var(--text-2); margin-bottom: 8px; font-weight: 500; }

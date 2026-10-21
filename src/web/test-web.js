@@ -76,14 +76,18 @@ setTimeout(() => {
     check('顶部导航高亮同步', navCalc.classList.contains('active'));
     check('hash 路由已写入（支持直链/后退）', window.location.hash === '#calculator', window.location.hash);
 
-    const mnBill = $$('.mn-item').find(a => a.getAttribute('href') === '#bill');
-    mnBill.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true }));
-    check('点底部 Tab 切到账单页', $('#bill').classList.contains('active') && !$('#calculator').classList.contains('active'));
-    check('底部 Tab 高亮同步', mnBill.classList.contains('active'));
-    check('顶部导航高亮与底部 Tab 一致', $$('.nav-link').find(a => a.getAttribute('href') === '#bill').classList.contains('active'));
+    // C2：账单分析从一级导航降级（顶部导航与底部 Tab 均不再有 #bill，入口在结果卡交叉链接与首页任务卡）
+    check('账单分析已从一级导航降级', !$$('.nav-link').some(a => a.getAttribute('href') === '#bill') && !$$('.mn-item').some(a => a.getAttribute('href') === '#bill'));
+    check('结果卡含去账单分析交叉入口', !!$('#resultCard .result-crosslink a[href="#bill"]'));
 
     $('.logo').dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true }));
     check('点 Logo 回首页', $('#page-home').classList.contains('active'));
+
+    // C1：首页任务式三入口，「我看不懂结算单」直达账单页
+    check('首页任务式三入口已就位', $$('.task-card').length === 3, String($$('.task-card').length) + ' 张任务卡');
+    const taskBill = $$('.task-card').find(a => a.getAttribute('href') === '#bill');
+    taskBill.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true }));
+    check('点任务卡「看不懂结算单」切到账单页', $('#bill').classList.contains('active') && !$('#page-home').classList.contains('active'));
 
     // 回到计算器页，继续后续功能测试
     navCalc.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true }));
