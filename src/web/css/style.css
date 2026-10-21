@@ -299,33 +299,6 @@ body.elder .elder-label { font-size: 15px; }
 .fc-link { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--brand); }
 
 /* ==========================================================
-   任务式入口：选一件事，带你做完
-   ========================================================== */
-.section-tasks { padding-top: 34px; padding-bottom: 0; }
-.task-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.task-card {
-    position: relative; display: flex; align-items: center; gap: 14px; overflow: hidden;
-    padding: 22px 20px; border-radius: var(--r-lg); background: #fff;
-    border: 1px solid var(--line-soft); box-shadow: var(--sh-xs);
-    text-decoration: none; color: inherit;
-    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
-}
-.task-card::before {
-    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-    background: var(--grad-ai); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s;
-}
-.task-card:hover { transform: translateY(-6px); box-shadow: var(--sh-lg); }
-.task-card:hover::before { opacity: 1; }
-.tk-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 48px; height: 48px; border-radius: 14px; font-size: 24px; }
-.tk-blue { background: #d5ecfc; } .tk-cyan { background: #d5f4fb; } .tk-violet { background: #e6e0fb; }
-.tk-copy { flex: 1; min-width: 0; }
-.task-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.task-card p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
-.tk-arrow { flex-shrink: 0; color: var(--brand); opacity: .55; transition: transform .25s var(--ease), opacity .25s; }
-.task-card:hover .tk-arrow { transform: translateX(4px); opacity: 1; }
-
-/* ==========================================================
    OCR 入口
    ========================================================== */
 .ocr-bar {
@@ -404,40 +377,6 @@ body.elder .elder-label { font-size: 15px; }
 .mode-panel { display: none; }
 .mode-panel.active { display: block; animation: fadeIn .35s var(--ease); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-/* 高级选项折叠（表单减法：必填只剩 城市/身份/金额） */
-.adv-box {
-    border: 1px dashed var(--line); border-radius: var(--r-md);
-    background: var(--bg-soft, #f8fafc); margin-bottom: 20px; overflow: hidden;
-}
-.adv-box summary {
-    list-style: none; cursor: pointer; padding: 11px 14px;
-    font-size: 13.5px; font-weight: 600; color: var(--text-2);
-    display: flex; align-items: center; gap: 8px; user-select: none;
-    transition: color .2s;
-}
-.adv-box summary::-webkit-details-marker { display: none; }
-.adv-box summary::before {
-    content: '▸'; font-size: 12px; color: var(--text-3); transition: transform .2s var(--ease);
-}
-.adv-box[open] summary::before { transform: rotate(90deg); }
-.adv-box summary:hover { color: var(--brand); }
-.adv-box summary small { font-weight: 400; font-size: 12px; color: var(--text-3); }
-.adv-box[open] summary { border-bottom: 1px dashed var(--line); }
-.adv-grid { padding: 16px 14px 0; margin-bottom: 0; }
-.adv-box > .form-group { padding: 0 14px 14px; margin-bottom: 0; }
-.adv-box > .form-group .ratio-sliders { margin-top: 4px; }
-.adv-box > .form-group .slider-warn { margin: 12px 0 0; }
-.adv-box > .form-group .form-hint { margin-top: 10px; }
-
-/* 结果卡交叉入口（账单分析入口并入计算器结果页） */
-.result-crosslink {
-    margin-top: 18px; padding: 12px 16px; border-radius: var(--r-md);
-    background: linear-gradient(120deg, #d5ecfc, #f2f9fe); border: 1px solid rgba(30, 148, 232, .18);
-    font-size: 13.5px; color: var(--text-2);
-}
-.result-crosslink a { color: var(--brand); font-weight: 600; text-decoration: none; margin-left: 4px; }
-.result-crosslink a:hover { text-decoration: underline; }
 
 /* 滑块 */
 .ratio-sliders { display: flex; flex-direction: column; gap: 18px; }
@@ -770,7 +709,6 @@ body.elder .elder-label { font-size: 15px; }
     .hero-cta { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-preview { max-width: 340px; width: 100%; margin: 0 auto; }
-    .task-grid { grid-template-columns: 1fr; }
     .feature-grid { grid-template-columns: repeat(2, 1fr); }
     .result-top { grid-template-columns: 1fr; }
     .donut { margin: 0 auto; }
@@ -835,7 +773,7 @@ body.elder .elder-label { font-size: 15px; }
    ========================================================== */
 @media print {
     body { background: #fff; }
-    .header, .hero, .section-tasks, .section-features, #calculator, #bill, #about, .footer, .mobile-nav, .toast-wrap, .modal { display: none !important; }
+    .header, .hero, .section-features, #calculator, #bill, #about, .footer, .mobile-nav, .toast-wrap, .modal { display: none !important; }
     #relocation { padding: 0 !important; }
     #relocation .card:first-of-type, .remind-box, .result-actions, .ocr-bar { display: none !important; }
     .checklist-card { box-shadow: none !important; border: 1px solid #ccc !important; }

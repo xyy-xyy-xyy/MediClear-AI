@@ -1,4 +1,4 @@
-﻿# 医算清 MediClear-AI
+# 医算清 MediClear-AI
 
 > 医保报销，一算就清 —— 分段累进规则引擎 · 纯本地发票 OCR · 异地就医清单，所有数据不上传。
 
@@ -53,7 +53,7 @@ src/
 │   ├── js/calculator.js  #   前端计算引擎
 │   ├── js/ocr.js         #   Tesseract.js 本地发票识别
 │   ├── js/relocation.js  #   异地就医模块
-│   └── test-web.js       #   41 项 jsdom 交互断言
+│   └── test-web.js       #   29 项 jsdom 交互断言
 └── python/               # Python 确定性规则引擎
     ├── calculator.py     #   门面入口
     ├── mediclear/
@@ -108,7 +108,7 @@ node src/web/test-web.js  # 29 项交互断言
 测试规模与覆盖率（pytest-cov 实测，CI 中每次推送自动复核）：
 
 - Python 引擎：**191 项 pytest 用例，`mediclear` 包行覆盖率 89%**（2169 语句）
-- 前端交互：41 项 jsdom 断言
+- 前端交互：29 项 jsdom 断言
 
 ## 免责声明
 

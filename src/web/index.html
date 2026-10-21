@@ -33,6 +33,7 @@
         <nav class="nav" id="nav">
             <a href="#home" class="nav-link active">首页</a>
             <a href="#calculator" class="nav-link">报销计算</a>
+            <a href="#bill" class="nav-link">账单分析</a>
             <a href="#relocation" class="nav-link">异地就医</a>
             <a href="#about" class="nav-link">关于</a>
         </nav>
@@ -66,6 +67,7 @@
                     开始算报销
                     <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
+                <a href="#bill" class="btn btn-ghost">看看账单分析</a>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat"><b class="counter" data-to="14">0</b><span>覆盖城市</span></div>
@@ -105,44 +107,6 @@
                 </div>
                 <div class="preview-foot">⚠️ 结果仅供参考，以医保部门核定为准</div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ 任务式入口：选一件事，带你做完 ============ -->
-<section class="section section-tasks" id="tasks">
-    <div class="container">
-        <div class="task-grid">
-            <a href="#calculator" class="task-card reveal">
-                <span class="tk-icon tk-blue">🧾</span>
-                <div class="tk-copy">
-                    <h3>我有一笔账单想算</h3>
-                    <p>拍照识别或填个总金额，3 秒算出医保报多少、自己掏多少</p>
-                </div>
-                <span class="tk-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </a>
-            <a href="#bill" class="task-card reveal">
-                <span class="tk-icon tk-cyan">📋</span>
-                <div class="tk-copy">
-                    <h3>我看不懂结算单</h3>
-                    <p>自付费用逐项归因：为什么报得比预期少、怎么才能多报一点</p>
-                </div>
-                <span class="tk-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </a>
-            <a href="#relocation" class="task-card reveal">
-                <span class="tk-icon tk-violet">✈️</span>
-                <div class="tk-copy">
-                    <h3>我要去外地看病</h3>
-                    <p>参保地 × 就诊地，一键生成材料清单与异地报销比例估算</p>
-                </div>
-                <span class="tk-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </a>
         </div>
     </div>
 </section>
@@ -247,35 +211,28 @@
                     <select id="city" class="form-select"></select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="insuranceType">身份</label>
+                    <label class="form-label" for="insuranceType">医保类型</label>
                     <select id="insuranceType" class="form-select">
                         <option value="employee">职工医保</option>
                         <option value="resident">居民医保</option>
                     </select>
                 </div>
-            </div>
-
-            <!-- 高级参数：默认住院 · 三级医院，多数人不用改 -->
-            <details class="adv-box">
-                <summary>就医类型与医院等级 <small>默认：住院 · 三级医院</small></summary>
-                <div class="form-grid adv-grid">
-                    <div class="form-group">
-                        <label class="form-label" for="visitType">就医类型</label>
-                        <select id="visitType" class="form-select">
-                            <option value="inpatient">住院</option>
-                            <option value="outpatient">门诊</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="hospitalLevel">医院等级</label>
-                        <select id="hospitalLevel" class="form-select">
-                            <option value="三级医院">三级医院</option>
-                            <option value="二级医院">二级医院</option>
-                            <option value="一级医院">一级医院</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label class="form-label" for="visitType">就医类型</label>
+                    <select id="visitType" class="form-select">
+                        <option value="inpatient">住院</option>
+                        <option value="outpatient">门诊</option>
+                    </select>
                 </div>
-            </details>
+                <div class="form-group">
+                    <label class="form-label" for="hospitalLevel">医院等级</label>
+                    <select id="hospitalLevel" class="form-select">
+                        <option value="三级医院">三级医院</option>
+                        <option value="二级医院">二级医院</option>
+                        <option value="一级医院">一级医院</option>
+                    </select>
+                </div>
+            </div>
 
             <!-- 录入模式切换 -->
             <div class="mode-switch">
@@ -300,28 +257,25 @@
                     </div>
                 </div>
 
-                <!-- 高级：费用结构，默认甲60/乙30/自费10，不确定就用默认 -->
-                <details class="adv-box">
-                    <summary>费用结构 <small>默认：甲类 60% · 乙类 30% · 自费 10%</small></summary>
-                    <div class="form-group">
-                        <div class="ratio-sliders">
-                            <div class="slider-item">
-                                <div class="slider-label"><span><i class="lg-dot a"></i>甲类费用</span><span id="classARatioValue">60%</span></div>
-                                <input type="range" id="classARatio" class="slider s-a" min="0" max="100" value="60">
-                            </div>
-                            <div class="slider-item">
-                                <div class="slider-label"><span><i class="lg-dot b"></i>乙类费用</span><span id="classBRatioValue">30%</span></div>
-                                <input type="range" id="classBRatio" class="slider s-b" min="0" max="100" value="30">
-                            </div>
-                            <div class="slider-item">
-                                <div class="slider-label"><span><i class="lg-dot c"></i>自费费用</span><span id="selfPayRatioValue">10%</span></div>
-                                <input type="range" id="selfPayRatio" class="slider s-c" min="0" max="100" value="10">
-                            </div>
+                <div class="form-group">
+                    <label class="form-label">费用结构（估算）</label>
+                    <div class="ratio-sliders">
+                        <div class="slider-item">
+                            <div class="slider-label"><span><i class="lg-dot a"></i>甲类费用</span><span id="classARatioValue">60%</span></div>
+                            <input type="range" id="classARatio" class="slider s-a" min="0" max="100" value="60">
                         </div>
-                        <div class="slider-warn" id="sliderWarn" hidden>⚠️ 三项合计为 <b id="sliderSum">100%</b>，不等于 100% 时会自动按比例归一化</div>
-                        <p class="form-hint">💡 甲类全额纳入报销，乙类先自付一部分再报，自费完全不报。可按发票实际情况调整</p>
+                        <div class="slider-item">
+                            <div class="slider-label"><span><i class="lg-dot b"></i>乙类费用</span><span id="classBRatioValue">30%</span></div>
+                            <input type="range" id="classBRatio" class="slider s-b" min="0" max="100" value="30">
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-label"><span><i class="lg-dot c"></i>自费费用</span><span id="selfPayRatioValue">10%</span></div>
+                            <input type="range" id="selfPayRatio" class="slider s-c" min="0" max="100" value="10">
+                        </div>
                     </div>
-                </details>
+                    <div class="slider-warn" id="sliderWarn" hidden>⚠️ 三项合计为 <b id="sliderSum">100%</b>，不等于 100% 时会自动按比例归一化</div>
+                    <p class="form-hint">💡 甲类全额纳入报销，乙类先自付一部分再报，自费完全不报。可按发票实际情况调整</p>
+                </div>
             </div>
 
             <!-- 模式B：明细 -->
@@ -439,8 +393,6 @@
                     <div class="suggest-list" id="suggestList"></div>
                 </div>
             </div>
-
-            <div class="result-crosslink">📋 想看这一年的整体账单？<a href="#bill">去账单分析，逐项归因 →</a></div>
 
             <div class="result-notice">⚠️ 以上为基于公开政策的预估结果，实际报销金额以医保部门核定为准</div>
         </div>
@@ -800,6 +752,7 @@
 <nav class="mobile-nav" id="mobileNav">
     <a href="#home" class="mn-item active"><span>🏠</span>首页</a>
     <a href="#calculator" class="mn-item"><span>🧮</span>算报销</a>
+    <a href="#bill" class="mn-item"><span>📊</span>账单</a>
     <a href="#relocation" class="mn-item"><span>✈️</span>异地</a>
     <a href="#about" class="mn-item"><span>ℹ️</span>关于</a>
 </nav>
