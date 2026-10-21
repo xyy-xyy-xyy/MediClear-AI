@@ -3,6 +3,7 @@
 > 医保报销，一算就清 —— 分段累进规则引擎 · 纯本地发票 OCR · 异地就医清单，所有数据不上传。
 
 [![tests](https://github.com/xyy-xyy-xyy/MediClear-AI/actions/workflows/tests.yml/badge.svg)](https://github.com/xyy-xyy-xyy/MediClear-AI/actions/workflows/tests.yml)
+![coverage](https://img.shields.io/badge/coverage-89%25-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **在线使用**：https://xyy-xyy-xyy.github.io/MediClear-AI/
@@ -88,8 +89,8 @@ python -m http.server 8000
 **运行测试**：
 
 ```bash
-pip install pytest
-pytest -q                 # 在 src/python 目录下执行，191 项用例
+pip install pytest pytest-cov
+pytest --cov=mediclear    # 在 src/python 目录下执行，191 项用例，核心引擎覆盖率 89%
 
 npm install jsdom --no-save
 node src/web/test-web.js  # 29 项交互断言
@@ -103,6 +104,11 @@ node src/web/test-web.js  # 29 项交互断言
 2. **数据加载校验**：schema 层在加载时拦截格式与逻辑错误的政策数据
 3. **双实现交叉对齐**：JS 与 Python 是同一套规则的独立实现，输出一致才可信
 4. **真实结算单抽检**：与实际医保结算单人工比对
+
+测试规模与覆盖率（pytest-cov 实测，CI 中每次推送自动复核）：
+
+- Python 引擎：**191 项 pytest 用例，`mediclear` 包行覆盖率 89%**（2169 语句）
+- 前端交互：29 项 jsdom 断言
 
 ## 免责声明
 
