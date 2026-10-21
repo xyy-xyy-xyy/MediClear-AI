@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 
-const WEB = 'D:/AI project/MediClear-AI/src/web';
+const WEB = __dirname; // 测试文件所在目录即前端目录（可移植，CI 可用）
 const html = fs.readFileSync(path.join(WEB, 'index.html'), 'utf8')
     // 去掉外部 CDN script（jsdom 下 echarts 无法渲染 canvas）
     .replace(/<script src="https:[^"]+"><\/script>/g, '')
