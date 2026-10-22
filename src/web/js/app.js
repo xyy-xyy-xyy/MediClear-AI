@@ -144,12 +144,12 @@
         const ANCHOR_PAGE = {
             top: 'home', features: 'home', home: 'home',
             calculator: 'calculator', bill: 'bill',
-            relocation: 'relocation', about: 'about'
+            relocation: 'relocation', agent: 'agent', about: 'about'
         };
         // 页面 id → 页面根元素（首页是 Hero+功能介绍 的包裹层，其余四页直接是 section）
         const PAGE_EL = {
             home: 'page-home', calculator: 'calculator',
-            bill: 'bill', relocation: 'relocation', about: 'about'
+            bill: 'bill', relocation: 'relocation', agent: 'agent', about: 'about'
         };
         let currentPage = '';
 
@@ -1189,6 +1189,169 @@
     let reminders = [];
     let lastChecklist = null;
 
+    // ============ AI 助手（D1：LLM 编排层 UI，数字全部来自本地引擎） ============
+    const AGENT_TOOL_NAMES = {
+        list_supported_cities: '城市列表',
+        get_city_policy: '政策查询',
+        calculate_reimbursement: '报销测算',
+        explain_result: '结果解读',
+        relocation_checklist: '异地清单',
+        parse_invoice_text: '票据解析'
+    };
+
+    function initAgent() {
+        const A = window.MediClearAgent;
+        const msgs = $('#agentMsgs');
+        const input = $('#agentInput');
+        const sendBtn = $('#agentSend');
+        const modal = $('#agentModal');
+        if (!A || !msgs || !input || !sendBtn || !modal) return;
+
+        let busy = false;
+
+        function addMsg(role, text) {
+            const wrap = document.createElement('div');
+            wrap.className = 'msg ' + (role === 'me' ? 'msg-me' : 'msg-ai');
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.textContent = text;
+            wrap.appendChild(bubble);
+            msgs.appendChild(wrap);
+            msgs.scrollTop = msgs.scrollHeight;
+            return wrap;
+        }
+
+        function addToolTag(events) {
+            if (!events || !events.length) return;
+            const tag = document.createElement('div');
+            tag.className = 'msg msg-tool';
+            tag.textContent = '🔧 已调用本地引擎：' + events.map(e =>
+                (AGENT_TOOL_NAMES[e.name] || e.name) + (e.ok ? '' : '（失败）')).join('、');
+            msgs.appendChild(tag);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function renderWelcome() {
+            msgs.innerHTML = '';
+            const configured = A.isConfigured();
+            addMsg('ai', configured
+                ? '你好！我是医保 AI 助手。报销测算、政策查询、异地清单都可以问我——所有金额都由本地引擎计算，我只负责理解你的问题与解释结果。'
+                : '你好！我是医保 AI 助手，首次使用需要配置模型服务（API Key 只保存在本机浏览器）。点击下方按钮开始设置，智谱 GLM 有免费模型可选。');
+            if (!configured) {
+                const wrap = document.createElement('div');
+                wrap.className = 'msg msg-ai';
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-primary btn-sm';
+                btn.type = 'button';
+                btn.textContent = '⚙ 配置 AI 服务';
+                btn.style.minHeight = '44px';
+                btn.addEventListener('click', openModal);
+                wrap.appendChild(btn);
+                msgs.appendChild(wrap);
+            }
+        }
+
+        function autoGrow() {
+            input.style.height = 'auto';
+            input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+        }
+
+        async function doSend(preset) {
+            const text = String(preset || input.value || '').trim();
+            if (!text || busy) return;
+            if (!A.isConfigured()) { openModal(); return; }
+            busy = true;
+            sendBtn.disabled = true;
+            input.value = '';
+            autoGrow();
+            addMsg('me', text);
+            const wait = addMsg('ai', '正在理解问题，并按需查询本地确定性引擎…');
+            try {
+                const res = await A.chat(text);
+                wait.remove();
+                if (res.ok) {
+                    addToolTag(res.toolEvents);
+                    addMsg('ai', res.reply);
+                } else {
+                    addMsg('ai', '出错了：' + res.error + '\n可点击右上角「⚙ 设置」检查服务配置。');
+                }
+            } catch (e) {
+                wait.remove();
+                addMsg('ai', '发生异常：' + e.message);
+            } finally {
+                busy = false;
+                sendBtn.disabled = false;
+            }
+        }
+
+        // ---- 设置弹层 ----
+        function syncProviderUI() {
+            const p = $('#cfgProvider').value;
+            const isCustom = p === 'custom';
+            $('#cfgBaseField').hidden = !isCustom;
+            $('#cfgModelField').hidden = !isCustom;
+            const preset = p && A.PROVIDERS[p];
+            $('#cfgTip').textContent = preset && preset.keyUrl
+                ? 'Key 申请地址：' + preset.keyUrl
+                : (isCustom ? '填写任意 OpenAI 兼容的 chat/completions 完整地址' : '');
+        }
+
+        function openModal() {
+            const s = A.getSettings();
+            $('#cfgProvider').value = s.provider || '';
+            $('#cfgKey').value = s.apiKey || '';
+            $('#cfgBase').value = s.baseUrl || '';
+            $('#cfgModel').value = s.model || '';
+            syncProviderUI();
+            modal.hidden = false;
+        }
+
+        $('#agentCfg').addEventListener('click', openModal);
+        $('#cfgProvider').addEventListener('change', syncProviderUI);
+        $('#cfgSave').addEventListener('click', () => {
+            A.saveSettings({
+                provider: $('#cfgProvider').value,
+                apiKey: $('#cfgKey').value.trim(),
+                baseUrl: $('#cfgBase').value.trim(),
+                model: $('#cfgModel').value.trim()
+            });
+            modal.hidden = true;
+            if (!A.isConfigured()) {
+                toast('请先选择服务商并填写 API Key', 'warn');
+                return;
+            }
+            toast('AI 服务配置已保存（仅存本机）', 'ok');
+            renderWelcome();
+        });
+        $('#cfgClear').addEventListener('click', () => {
+            A.saveSettings({ provider: '', apiKey: '', baseUrl: '', model: '' });
+            modal.hidden = true;
+            toast('已清除本机 AI 配置', 'ok');
+            renderWelcome();
+        });
+        modal.addEventListener('click', e => { if (e.target === modal) modal.hidden = true; });
+
+        // ---- 会话交互 ----
+        $('#agentNew').addEventListener('click', () => {
+            A.resetChat();
+            renderWelcome();
+        });
+        $('#agentChips').addEventListener('click', e => {
+            const chip = e.target.closest ? e.target.closest('.chip') : null;
+            if (chip) doSend(chip.getAttribute('data-q'));
+        });
+        sendBtn.addEventListener('click', () => doSend());
+        input.addEventListener('input', autoGrow);
+        input.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                doSend();
+            }
+        });
+
+        renderWelcome();
+    }
+
     function initRelocation() {
         try {
             const raw = localStorage.getItem(LS_REMIND);
@@ -1487,6 +1650,7 @@
         initCalculator();
         initBillAnalysis();
         initRelocation();
+        initAgent();
         initCollapse();
 
         if (!HAS_ECHARTS) {
