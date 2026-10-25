@@ -901,44 +901,30 @@ body.elder .elder-label { font-size: 15px; }
     line-height: 1.6;
 }
 
-/* 设置弹层（独立实现，避免与现有 modal 样式耦合） */
-#agentModal.modal-mask {
-    position: fixed;
-    inset: 0;
-    background: rgba(22, 79, 125, .38);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 90;
-    padding: 18px;
+/* 设置弹层：复用站点既有 .modal / .modal-body 结构 */
+#agentModal .modal-body { max-width: 460px; padding: 26px; }
+#agentModal .cfg-desc {
+    font-size: 12.5px;
+    color: var(--text-3);
+    line-height: 1.7;
+    margin-bottom: 20px;
 }
-#agentModal[hidden] { display: none; }
-#agentModal .modal {
-    background: var(--bg-card);
-    border-radius: var(--r-xl);
-    box-shadow: var(--sh-lg);
-    padding: 24px;
-    width: 100%;
-    max-width: 420px;
-}
-#agentModal .modal h3 { color: var(--text-1); font-size: 18px; margin-bottom: 6px; }
-#agentModal .modal-sub { font-size: 13px; color: var(--text-3); margin-bottom: 16px; line-height: 1.6; }
-#agentModal .field { display: block; margin-bottom: 12px; }
+#agentModal .field { display: block; margin-bottom: 18px; }
 #agentModal .field span {
     display: block;
     font-size: 13px;
-    color: var(--text-2);
-    margin-bottom: 6px;
     font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 8px;
 }
 #agentModal .field select,
 #agentModal .field input {
     width: 100%;
-    min-height: 44px;
+    box-sizing: border-box;
+    height: 46px;
     border: 1px solid var(--line);
     border-radius: var(--r-sm);
-    padding: 10px 12px;
+    padding: 0 14px;
     font-size: 14px;
     font-family: inherit;
     color: var(--text-1);
@@ -946,9 +932,19 @@ body.elder .elder-label { font-size: 15px; }
     outline: none;
 }
 #agentModal .field select:focus,
-#agentModal .field input:focus { border-color: var(--brand); background: #fff; }
-#agentModal .modal-tip { font-size: 12.5px; color: var(--brand-600); margin-bottom: 12px; word-break: break-all; }
-#agentModal .modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+#agentModal .field input:focus {
+    border-color: var(--brand);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(50, 171, 253, .14);
+}
+#agentModal .modal-tip {
+    text-align: left;
+    margin: 0 0 16px;
+    font-size: 12.5px;
+    color: var(--brand-600);
+    line-height: 1.6;
+    word-break: break-all;
+}
 
 @media (max-width: 640px) {
     .agent-card { padding: 14px; border-radius: var(--r-lg); }

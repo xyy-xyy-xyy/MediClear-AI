@@ -713,39 +713,7 @@
         </div>
     </div>
 
-    <div class="modal-mask" id="agentModal" hidden>
-        <div class="modal">
-            <h3>AI 服务设置（BYO Key）</h3>
-            <p class="modal-sub">API Key 仅保存在本机浏览器 localStorage，不进代码仓库、不经任何中间服务器。</p>
-            <label class="field">
-                <span>服务商</span>
-                <select id="cfgProvider">
-                    <option value="">请选择</option>
-                    <option value="glm">智谱 GLM（glm-4-flash 免费）</option>
-                    <option value="deepseek">DeepSeek（按量付费）</option>
-                    <option value="custom">自定义（OpenAI 兼容接口）</option>
-                </select>
-            </label>
-            <label class="field">
-                <span>API Key</span>
-                <input type="password" id="cfgKey" placeholder="sk-..." autocomplete="off">
-            </label>
-            <label class="field" id="cfgBaseField" hidden>
-                <span>接口地址</span>
-                <input type="text" id="cfgBase" placeholder="https://.../v1/chat/completions">
-            </label>
-            <label class="field" id="cfgModelField" hidden>
-                <span>模型名</span>
-                <input type="text" id="cfgModel" placeholder="如 gpt-4o-mini">
-            </label>
-            <p class="modal-tip" id="cfgTip"></p>
-            <div class="modal-actions">
-                <button class="btn btn-ghost" id="cfgClear" type="button">清除</button>
-                <button class="btn btn-primary" id="cfgSave" type="button">保存</button>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 <!-- ============ 关于 / 免责 ============ -->
 <section id="about" class="section section-alt page">
@@ -822,6 +790,44 @@
     <a href="#agent" class="mn-item"><span>🤖</span>助手</a>
     <a href="#about" class="mn-item"><span>ℹ️</span>关于</a>
 </nav>
+
+<!-- ============ AI 助手设置弹层 ============ -->
+<div class="modal" id="agentModal" hidden>
+    <div class="modal-mask" data-close></div>
+    <div class="modal-body">
+        <div class="modal-head">
+            <b>AI 服务设置</b>
+            <button class="modal-close" type="button" data-close>×</button>
+        </div>
+        <p class="cfg-desc">BYO Key：API Key 只保存在本机浏览器，不进代码仓库、不经任何中间服务器。</p>
+        <label class="field">
+            <span>服务商</span>
+            <select id="cfgProvider">
+                <option value="">请选择</option>
+                <option value="glm">智谱 GLM（glm-4-flash 免费）</option>
+                <option value="deepseek">DeepSeek（按量付费）</option>
+                <option value="custom">自定义（OpenAI 兼容接口）</option>
+            </select>
+        </label>
+        <label class="field">
+            <span>API Key</span>
+            <input type="password" id="cfgKey" placeholder="粘贴你的 API Key，如 sk-..." autocomplete="off">
+        </label>
+        <label class="field" id="cfgBaseField" hidden>
+            <span>接口地址</span>
+            <input type="text" id="cfgBase" placeholder="https://.../v1/chat/completions">
+        </label>
+        <label class="field" id="cfgModelField" hidden>
+            <span>模型名</span>
+            <input type="text" id="cfgModel" placeholder="如 gpt-4o-mini">
+        </label>
+        <p class="modal-tip" id="cfgTip"></p>
+        <div class="modal-actions">
+            <button class="btn btn-ghost" id="cfgClear" type="button">清除</button>
+            <button class="btn btn-primary" id="cfgSave" type="button">保存</button>
+        </div>
+    </div>
+</div>
 
 <!-- ============ 分享弹窗 ============ -->
 <div class="modal" id="shareModal" hidden>
