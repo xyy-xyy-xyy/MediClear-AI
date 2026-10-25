@@ -161,7 +161,7 @@ def get_visit_type_policy(city_code, insurance_type, visit_type):
 def get_national_default_policy(insurance_type=None):
     """获取「全国通用」参考政策。
 
-    城市库里除 14 个具体城市外，还内置了一份全国通用参考政策
+    城市库里除 19 个具体城市外，还内置了一份全国通用参考政策
     （``rules.NATIONAL_CITY_CODE``，即 ``'national'``）：
 
     ==========  ============  ============

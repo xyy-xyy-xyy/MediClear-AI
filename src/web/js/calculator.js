@@ -1,6 +1,6 @@
 /**
  * 医算清 MediClear-AI · 医保报销计算引擎 v2.0
- * 基于Python计算引擎 v2.0.0 翻译（14城市 + 全国通用参考）
+ * 基于Python计算引擎 v2.0.0 翻译（19城市 + 全国通用参考）
  * 政策版本：2026.1（示例数据，仅供参考）
  */
 
@@ -21,7 +21,7 @@
         max_reimburse: 300000
     };
 
-    // ===== 14城市医保政策 + 全国通用参考 =====
+    // ===== 19城市医保政策 + 全国通用参考 =====
     const CITY_POLICIES = {
         beijing: {
             name: "北京市",
@@ -721,7 +721,284 @@
                 },
             },
         },
-        // 全国通用参考政策：当用户所在城市不在上面 14 个城市里时使用。
+        // ===== 2026.1 新增：天津 / 苏州 / 青岛 / 合肥 / 昆明（官方公开口径，见 source / note）=====
+        tianjin: {
+            name: "天津市",
+            province: "天津市",
+            tier: "一线",
+            source: "天津市医保局《2026年度城乡居民基本医疗保险宣传提纲》、津政函〔2019〕55号、市卫健委分级诊疗答复",
+            note: "职工住院起付 一级800/二级1100/三级1700 元（年度内第二次起按30%），在职 85%（12万元以内）/80%，退休 90%（18万元以内）；职工门急诊 5500 元以上统一 55%；居民为高档缴费口径（低档 住院 75%/70%/65%，门诊 50%/50%/45%）。",
+            employee: {
+                outpatient: {
+                    deductible: 800,
+                    max_reimburse: 10000,
+                    reimburse_rates: [
+                        { min: 0, max: 5500, rate: 0.75, location: "一级医院" },
+                        { min: 5500, max: 10000, rate: 0.55, location: "一级医院" },
+                        { min: 0, max: 5500, rate: 0.65, location: "二级医院" },
+                        { min: 5500, max: 10000, rate: 0.55, location: "二级医院" },
+                        { min: 0, max: 5500, rate: 0.55, location: "三级医院" },
+                        { min: 5500, max: 10000, rate: 0.55, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 1700,
+                    max_reimburse: 450000,
+                    reimburse_rates: [
+                        { min: 0, max: 120000, rate: 0.85, location: "一级医院" },
+                        { min: 120000, max: 450000, rate: 0.8, location: "一级医院" },
+                        { min: 0, max: 120000, rate: 0.85, location: "二级医院" },
+                        { min: 120000, max: 450000, rate: 0.8, location: "二级医院" },
+                        { min: 0, max: 120000, rate: 0.85, location: "三级医院" },
+                        { min: 120000, max: 450000, rate: 0.8, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            },
+            resident: {
+                outpatient: {
+                    deductible: 600,
+                    max_reimburse: 4000,
+                    reimburse_rates: [
+                        { min: 0, max: 4000, rate: 0.55, location: "一级医院" },
+                        { min: 0, max: 4000, rate: 0.55, location: "二级医院" },
+                        { min: 0, max: 4000, rate: 0.5, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 500,
+                    max_reimburse: 250000,
+                    reimburse_rates: [
+                        { min: 0, max: 250000, rate: 0.85, location: "一级医院" },
+                        { min: 0, max: 250000, rate: 0.8, location: "二级医院" },
+                        { min: 0, max: 250000, rate: 0.75, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            }
+        },
+        suzhou: {
+            name: "苏州市",
+            province: "江苏省",
+            tier: "新一线",
+            source: "苏州市医保局《居民医疗保险门诊待遇》、苏州市职工/居民住院与门诊结付标准（2026 年公开口径）",
+            note: "职工住院起付 三级800/二级600/一级300 元（退休 600/400/200），4万元以上统一 95%，35万元以上由大额医疗费用社会共济基金支付；职工门诊起付 600 元（退休 400）、限额 13000 元，退休比例 90%/85%/70%。居民住院起付 三级800/二级500/一级300 元（学生儿童统一 500）。",
+            employee: {
+                outpatient: {
+                    deductible: 600,
+                    max_reimburse: 13000,
+                    reimburse_rates: [
+                        { min: 0, max: 13000, rate: 0.8, location: "一级医院" },
+                        { min: 0, max: 13000, rate: 0.75, location: "二级医院" },
+                        { min: 0, max: 13000, rate: 0.6, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 800,
+                    max_reimburse: 350000,
+                    reimburse_rates: [
+                        { min: 0, max: 40000, rate: 0.9, location: "一级医院" },
+                        { min: 40000, max: 350000, rate: 0.95, location: "一级医院" },
+                        { min: 0, max: 40000, rate: 0.9, location: "二级医院" },
+                        { min: 40000, max: 350000, rate: 0.95, location: "二级医院" },
+                        { min: 0, max: 40000, rate: 0.9, location: "三级医院" },
+                        { min: 40000, max: 350000, rate: 0.95, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            },
+            resident: {
+                outpatient: {
+                    deductible: 0,
+                    max_reimburse: 1200,
+                    reimburse_rates: [
+                        { min: 0, max: 1200, rate: 0.65, location: "一级医院" },
+                        { min: 0, max: 1200, rate: 0.4, location: "二级医院" },
+                        { min: 0, max: 1200, rate: 0.35, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 800,
+                    max_reimburse: 350000,
+                    reimburse_rates: [
+                        { min: 0, max: 40000, rate: 0.75, location: "一级医院" },
+                        { min: 40000, max: 100000, rate: 0.8, location: "一级医院" },
+                        { min: 100000, max: 200000, rate: 0.85, location: "一级医院" },
+                        { min: 200000, max: 350000, rate: 0.9, location: "一级医院" },
+                        { min: 0, max: 40000, rate: 0.75, location: "二级医院" },
+                        { min: 40000, max: 100000, rate: 0.8, location: "二级医院" },
+                        { min: 100000, max: 200000, rate: 0.85, location: "二级医院" },
+                        { min: 200000, max: 350000, rate: 0.9, location: "二级医院" },
+                        { min: 0, max: 40000, rate: 0.75, location: "三级医院" },
+                        { min: 40000, max: 100000, rate: 0.8, location: "三级医院" },
+                        { min: 100000, max: 200000, rate: 0.85, location: "三级医院" },
+                        { min: 200000, max: 350000, rate: 0.9, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            }
+        },
+        qingdao: {
+            name: "青岛市",
+            province: "山东省",
+            tier: "新一线",
+            source: "青岛市医保局《青岛市社会医疗保险政策简表（2026）》",
+            note: "职工住院起付 三级 800-1000 元（按机构类别）、二级 500 元、一级及社区 200 元；退休 0-4万 93%/94%/95%、4万以上 97%。居民按成年一档口径（二档 55%/75%/85%，少年儿童 80%/85%/90%）；居民门诊限签约基层 65%，二、三级不适用。",
+            employee: {
+                outpatient: {
+                    deductible: 800,
+                    max_reimburse: 6000,
+                    reimburse_rates: [
+                        { min: 0, max: 6000, rate: 0.8, location: "一级医院" },
+                        { min: 0, max: 6000, rate: 0.7, location: "二级医院" },
+                        { min: 0, max: 6000, rate: 0.6, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 1000,
+                    max_reimburse: 200000,
+                    reimburse_rates: [
+                        { min: 0, max: 40000, rate: 0.9, location: "一级医院" },
+                        { min: 40000, max: 200000, rate: 0.95, location: "一级医院" },
+                        { min: 0, max: 40000, rate: 0.88, location: "二级医院" },
+                        { min: 40000, max: 200000, rate: 0.95, location: "二级医院" },
+                        { min: 0, max: 40000, rate: 0.86, location: "三级医院" },
+                        { min: 40000, max: 200000, rate: 0.95, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            },
+            resident: {
+                outpatient: {
+                    deductible: 0,
+                    max_reimburse: 800,
+                    reimburse_rates: [
+                        { min: 0, max: 800, rate: 0.65, location: "一级医院" },
+                        { min: 0, max: 800, rate: 0, location: "二级医院" },
+                        { min: 0, max: 800, rate: 0, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 800,
+                    max_reimburse: 180000,
+                    reimburse_rates: [
+                        { min: 0, max: 180000, rate: 0.85, location: "一级医院" },
+                        { min: 0, max: 180000, rate: 0.8, location: "二级医院" },
+                        { min: 0, max: 180000, rate: 0.7, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            }
+        },
+        hefei: {
+            name: "合肥市",
+            province: "安徽省",
+            tier: "新一线",
+            source: "合肥市《基本医疗保险实施细则》（合政办〔2024〕25号）",
+            note: "职工住院起付 200/400/600 元，退休 97%/96%/95%；职工门诊起付 一级200/二三级400 元、限额 4000 元（退休 +10 个百分点、限额 5000 元）。居民住院三级按省属口径 1000 元/70%（市属 700 元/75%）；居民门诊为二级以上大额门诊口径（超 800 元后 60%、限额 2000 元），基层门诊 60% 限额 150 元。居民住院封顶线暂按全国参考值 20 万元。",
+            employee: {
+                outpatient: {
+                    deductible: 400,
+                    max_reimburse: 4000,
+                    reimburse_rates: [
+                        { min: 0, max: 4000, rate: 0.6, location: "一级医院" },
+                        { min: 0, max: 4000, rate: 0.5, location: "二级医院" },
+                        { min: 0, max: 4000, rate: 0.5, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 600,
+                    max_reimburse: 300000,
+                    reimburse_rates: [
+                        { min: 0, max: 300000, rate: 0.94, location: "一级医院" },
+                        { min: 0, max: 300000, rate: 0.92, location: "二级医院" },
+                        { min: 0, max: 300000, rate: 0.9, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            },
+            resident: {
+                outpatient: {
+                    deductible: 800,
+                    max_reimburse: 2000,
+                    reimburse_rates: [
+                        { min: 0, max: 2000, rate: 0.6, location: "一级医院" },
+                        { min: 0, max: 2000, rate: 0.6, location: "二级医院" },
+                        { min: 0, max: 2000, rate: 0.6, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 1000,
+                    max_reimburse: 200000,
+                    reimburse_rates: [
+                        { min: 0, max: 200000, rate: 0.9, location: "一级医院" },
+                        { min: 0, max: 200000, rate: 0.8, location: "二级医院" },
+                        { min: 0, max: 200000, rate: 0.7, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            }
+        },
+        kunming: {
+            name: "昆明市",
+            province: "云南省",
+            tier: "二线",
+            source: "昆明市医保局《医保待遇政策简表》（2026 年公开口径）",
+            note: "住院起付 一级200/二级550/三级880 元；职工在职 91%/88%/85%，退休 95%/92%/89%，限额 基本 8 万元 + 大病 42 万元；职工门诊起付 20/40/60 元、限额 6000 元（退休 70%/65%/60%）。居民门诊 一级 50%、二级 25%（三级暂按二级口径）、限额 400 元；居民住院封顶线暂按全国参考值 20 万元。",
+            employee: {
+                outpatient: {
+                    deductible: 60,
+                    max_reimburse: 6000,
+                    reimburse_rates: [
+                        { min: 0, max: 6000, rate: 0.6, location: "一级医院" },
+                        { min: 0, max: 6000, rate: 0.55, location: "二级医院" },
+                        { min: 0, max: 6000, rate: 0.5, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 880,
+                    max_reimburse: 500000,
+                    reimburse_rates: [
+                        { min: 0, max: 500000, rate: 0.91, location: "一级医院" },
+                        { min: 0, max: 500000, rate: 0.88, location: "二级医院" },
+                        { min: 0, max: 500000, rate: 0.85, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            },
+            resident: {
+                outpatient: {
+                    deductible: 0,
+                    max_reimburse: 400,
+                    reimburse_rates: [
+                        { min: 0, max: 400, rate: 0.5, location: "一级医院" },
+                        { min: 0, max: 400, rate: 0.25, location: "二级医院" },
+                        { min: 0, max: 400, rate: 0.25, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                },
+                inpatient: {
+                    deductible: 880,
+                    max_reimburse: 200000,
+                    reimburse_rates: [
+                        { min: 0, max: 200000, rate: 0.85, location: "一级医院" },
+                        { min: 0, max: 200000, rate: 0.75, location: "二级医院" },
+                        { min: 0, max: 200000, rate: 0.6, location: "三级医院" }
+                    ],
+                    default_hospital_level: "三级医院"
+                }
+            }
+        },
+        // 全国通用参考政策：当用户所在城市不在上面 19 个城市里时使用。
         // 数值为国家层面的常见参考口径，各地差异很大，结果仅供参考。
         national: {
             name: "全国通用（参考）",
@@ -1025,7 +1302,12 @@
 
     // ===== 工具函数 =====
     function getSupportedCities() {
-        return Object.keys(CITY_POLICIES).map(code => ({
+        // 「全国通用（参考）」固定排在最前，作为所在城市未收录时的兜底选项
+        const codes = Object.keys(CITY_POLICIES);
+        const ordered = codes.indexOf('national') > -1
+            ? ['national'].concat(codes.filter(c => c !== 'national'))
+            : codes;
+        return ordered.map(code => ({
             code: code,
             name: CITY_POLICIES[code].name,
             province: CITY_POLICIES[code].province,

@@ -275,7 +275,7 @@ def test_performance_multi_admission_simulation():
 
 
 def test_performance_city_comparison_scales():
-    """对比 14 个城市应在可接受的交互时间内完成。"""
+    """对比 19 个城市应在可接受的交互时间内完成。"""
     cities = [c['code'] for c in get_repository().current.list_cities()]
     start = time.perf_counter()
     comparison = compare_cities(cities, 'employee', 50000)

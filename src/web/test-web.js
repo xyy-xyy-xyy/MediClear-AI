@@ -64,8 +64,8 @@ check('quickCalculate 返回结构完整', r1 && r1.summary && r1.summary.totalR
 // ---- 测试 2：初始化 ----
 setTimeout(() => {
     check('无 JS 运行时错误', errors.length === 0, errors.join(' | '));
-    check('城市下拉已填充', $('#city') && $('#city').options.length === 15, $('#city') && $('#city').options.length + ' 个城市（14城市+全国通用）');
-    check('参保地下拉已填充', $('#fromCity').options.length === 15);
+    check('城市下拉已填充且全国通用置顶', $('#city') && $('#city').options.length === 20 && $('#city').options[0].value === 'national', $('#city') && $('#city').options.length + ' 个城市（19城市+全国通用，首位 ' + $('#city').options[0].value + '）');
+    check('参保地下拉已填充', $('#fromCity').options.length === 20);
 
     // ---- 测试 2.5：页面切换（切页而非滚动） ----
     check('初始为首页', $('#page-home').classList.contains('active'));

@@ -299,7 +299,7 @@
     "employee": {
       "active": {
         "personal_rate": 0.02,
-        "employer_rate_to_account": 0.0,
+        "employer_rate_to_account": 0,
         "employer_rate_to_account_by_city": {
           "beijing": 0.008,
           "shenzhen": 0.02
@@ -331,7 +331,7 @@
       "enabled": false,
       "note": "居民医保不设个人账户，普通门诊按统筹基金报销。"
     },
-    "interest_rate": 0.0,
+    "interest_rate": 0,
     "carry_over": true,
     "note": "当年账户余额可结转下年使用，一般不可提现。"
   },
@@ -416,6 +416,26 @@
       "national": {
         "min": 6000,
         "max": 30000
+      },
+      "tianjin": {
+        "min": 5124,
+        "max": 25620
+      },
+      "suzhou": {
+        "min": 5025,
+        "max": 25127
+      },
+      "qingdao": {
+        "min": 4573,
+        "max": 22863
+      },
+      "hefei": {
+        "min": 4354,
+        "max": 21772
+      },
+      "kunming": {
+        "min": 4403,
+        "max": 22017
       }
     }
   },
@@ -434,27 +454,27 @@
         "normal_delivery": {
           "name": "顺产",
           "limit": 3000,
-          "rate": 1.0
+          "rate": 1
         },
         "difficult_delivery": {
           "name": "难产",
           "limit": 4000,
-          "rate": 1.0
+          "rate": 1
         },
         "cesarean": {
           "name": "剖宫产",
           "limit": 5000,
-          "rate": 1.0
+          "rate": 1
         },
         "multiple_birth": {
           "name": "多胞胎",
           "limit": 6000,
-          "rate": 1.0
+          "rate": 1
         },
         "family_planning": {
           "name": "计划生育手术费",
           "limit": 800,
-          "rate": 1.0
+          "rate": 1
         }
       },
       "city_overrides": {
@@ -557,9 +577,9 @@
     "note": "deductible_factors 按住院次序取值，超出长度后沿用最后一个系数；null 表示不设年度起付线总额上限。",
     "default": {
       "deductible_factors": [
-        1.0,
+        1,
         0.5,
-        0.0
+        0
       ],
       "annual_deductible_cap": null,
       "reset_on_new_year": true,
@@ -569,104 +589,104 @@
     "city_overrides": {
       "beijing": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "shanghai": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "guangzhou": {
         "deductible_factors": [
-          1.0,
+          1,
           0.6,
           0.3,
-          0.0
+          0
         ]
       },
       "shenzhen": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "hangzhou": {
         "deductible_factors": [
-          1.0,
+          1,
           0.7,
           0.4,
-          0.0
+          0
         ]
       },
       "nanjing": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "wuhan": {
         "deductible_factors": [
-          1.0,
+          1,
           0.6,
           0.3,
-          0.0
+          0
         ]
       },
       "chengdu": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "chongqing": {
         "deductible_factors": [
-          1.0,
+          1,
           0.6,
           0.3,
-          0.0
+          0
         ]
       },
       "xian": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "shenyang": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "jinan": {
         "deductible_factors": [
-          1.0,
+          1,
           0.6,
-          0.0
+          0
         ]
       },
       "zhengzhou": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       },
       "changsha": {
         "deductible_factors": [
-          1.0,
+          1,
           0.5,
-          0.0
+          0
         ]
       }
     }
