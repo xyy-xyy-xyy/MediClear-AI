@@ -8,21 +8,17 @@
 
 **在线使用**：https://xyy-xyy-xyy.github.io/MediClear-AI/
 
-![医算清界面预览](assets/cover-16x9.png)
-
 ## 界面预览
 
-**报销测算 —— 发票 OCR 一键识别 / 快速估算 / 分段明细**
+**首页 —— 医保报销，一算就清：三大入口 + 本地测算预览**
 
-![报销测算](assets/calculator.png)
+![首页](assets/home.png)
 
-**账单分析 —— 本地数据解读与归因建议，不上传任何个人信息**
+**AI 医保助手 —— 自然语言问答，金额仍由本地引擎计算，API Key 只存本机**
 
-![账单分析](assets/bill-analysis.png)
+![AI 医保助手](assets/ai-assistant.png)
 
-**异地就医 —— 参保地 × 就诊地材料清单与报销比例估算**
-
-![异地就医](assets/relocation.png)
+> 更多截图（报销测算 / 账单分析 / 异地就医 / 移动端）见 [`assets/screenshots`](assets/screenshots)
 
 ## 它解决什么问题
 
