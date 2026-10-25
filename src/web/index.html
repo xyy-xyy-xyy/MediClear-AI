@@ -35,6 +35,7 @@
             <a href="#calculator" class="nav-link">报销计算</a>
             <a href="#bill" class="nav-link">账单分析</a>
             <a href="#relocation" class="nav-link">异地就医</a>
+            <a href="#agent" class="nav-link">AI 助手</a>
             <a href="#about" class="nav-link">关于</a>
         </nav>
 
@@ -682,6 +683,70 @@
     </div>
 </section>
 
+<!-- AI 助手（D1）：LLM 编排层 UI（BYO-key）。所有金额与政策数字均由本地确定性引擎计算，AI 仅负责理解与转述 -->
+<section id="agent" class="section page">
+    <div class="container">
+        <div class="agent-head">
+            <div>
+                <h2 class="section-title">AI 医保助手</h2>
+                <p class="section-sub">对话式解答报销、政策与异地就医问题。所有金额均由本地引擎计算，AI 只负责理解与转述。</p>
+            </div>
+            <div class="agent-actions">
+                <button class="btn btn-ghost" id="agentNew" type="button">新会话</button>
+                <button class="btn btn-ghost" id="agentCfg" type="button">⚙ 设置</button>
+            </div>
+        </div>
+
+        <div class="agent-card">
+            <div class="agent-msgs" id="agentMsgs"></div>
+            <div class="agent-chips" id="agentChips">
+                <button class="chip" type="button" data-q="我有一笔 3 万元的住院账单，北京职工医保能报多少？">💰 算一笔报销</button>
+                <button class="chip" type="button" data-q="长沙的居民医保，住院的起付线和报销比例是多少？">📋 查城市政策</button>
+                <button class="chip" type="button" data-q="帮我算算为什么报出来的钱比预期的少？">🤔 为什么报得少</button>
+                <button class="chip" type="button" data-q="我要从长沙去广州看病，报销需要准备哪些材料？">✈️ 异地就医清单</button>
+            </div>
+            <div class="agent-inputrow">
+                <textarea id="agentInput" rows="1" placeholder="输入你的医保问题，如：住院 2 万能报多少？"></textarea>
+                <button class="btn btn-primary" id="agentSend" type="button">发送</button>
+            </div>
+            <p class="agent-note">对话文字将发送给你配置的模型服务商；金额计算与政策数据始终在本地完成，API Key 仅保存在本机浏览器。测算结果仅供参考。</p>
+        </div>
+    </div>
+
+    <div class="modal-mask" id="agentModal" hidden>
+        <div class="modal">
+            <h3>AI 服务设置（BYO Key）</h3>
+            <p class="modal-sub">API Key 仅保存在本机浏览器 localStorage，不进代码仓库、不经任何中间服务器。</p>
+            <label class="field">
+                <span>服务商</span>
+                <select id="cfgProvider">
+                    <option value="">请选择</option>
+                    <option value="glm">智谱 GLM（glm-4-flash 免费）</option>
+                    <option value="deepseek">DeepSeek（按量付费）</option>
+                    <option value="custom">自定义（OpenAI 兼容接口）</option>
+                </select>
+            </label>
+            <label class="field">
+                <span>API Key</span>
+                <input type="password" id="cfgKey" placeholder="sk-..." autocomplete="off">
+            </label>
+            <label class="field" id="cfgBaseField" hidden>
+                <span>接口地址</span>
+                <input type="text" id="cfgBase" placeholder="https://.../v1/chat/completions">
+            </label>
+            <label class="field" id="cfgModelField" hidden>
+                <span>模型名</span>
+                <input type="text" id="cfgModel" placeholder="如 gpt-4o-mini">
+            </label>
+            <p class="modal-tip" id="cfgTip"></p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" id="cfgClear" type="button">清除</button>
+                <button class="btn btn-primary" id="cfgSave" type="button">保存</button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ============ 关于 / 免责 ============ -->
 <section id="about" class="section section-alt page">
     <div class="container">
@@ -754,6 +819,7 @@
     <a href="#calculator" class="mn-item"><span>🧮</span>算报销</a>
     <a href="#bill" class="mn-item"><span>📊</span>账单</a>
     <a href="#relocation" class="mn-item"><span>✈️</span>异地</a>
+    <a href="#agent" class="mn-item"><span>🤖</span>助手</a>
     <a href="#about" class="mn-item"><span>ℹ️</span>关于</a>
 </nav>
 
@@ -811,6 +877,7 @@
 <script src="js/calculator.js"></script>
 <script src="js/relocation.js"></script>
 <script src="js/ocr.js"></script>
+<script src="js/agent.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

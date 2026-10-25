@@ -37,8 +37,10 @@ function check(name, cond, extra) {
 // ---- 加载脚本 ----
 try {
     const calcSrc = fs.readFileSync(path.join(WEB, 'js/calculator.js'), 'utf8');
+    const agentSrc = fs.readFileSync(path.join(WEB, 'js/agent.js'), 'utf8');
     const appSrc = fs.readFileSync(path.join(WEB, 'js/app.js'), 'utf8');
     window.eval(calcSrc);
+    window.eval(agentSrc);
     window.eval(appSrc);
 } catch (e) {
     console.error('脚本加载失败:', e.message);
@@ -164,6 +166,26 @@ setTimeout(() => {
         // ---- 测试 6：长辈模式 ----
         $('#elderToggle').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
         check('长辈模式切换生效', window.document.body.classList.contains('elder'));
+
+        // ---- 测试 7：AI 助手（D1 编排层 UI）----
+        check('MediClearAgent 已加载且工具白名单 6 个', !!window.MediClearAgent && window.MediClearAgent.TOOLS.length === 6);
+        check('导航含 AI 助手入口', $('.nav-link').length === 6 &&
+            $('.nav-link').some(a => a.getAttribute('href') === '#agent'));
+        check('移动端底栏含助手入口', $('.mn-item').length === 6);
+        check('快捷问题 4 个', $('#agentChips .chip').length === 4);
+
+        $('a[href="#agent"]').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+        check('点击导航切换到 AI 助手页', $('#agent').classList.contains('active'));
+        check('未配置时欢迎语含设置引导', $('#agentMsgs').textContent.includes('配置'));
+
+        $('#agentCfg').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+        check('设置弹层可打开', !$('#agentModal').hidden);
+        $('#cfgProvider').value = 'glm';
+        $('#cfgKey').value = 'sk-ui-test';
+        $('#cfgSave').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+        check('保存后 isConfigured 生效', window.MediClearAgent.isConfigured() === true);
+        check('保存后欢迎语切换为已配置版', $('#agentMsgs').textContent.includes('本地引擎计算'));
+
 
         // ---- 测试 7：localStorage 隔离（clear 后重新初始化）----
         console.log('\n========== 结果汇总 ==========');

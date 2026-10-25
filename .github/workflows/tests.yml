@@ -28,3 +28,4 @@ jobs:
           node-version: "20"
       - run: npm install jsdom --no-save
       - run: node src/web/test-web.js
+      - run: node src/web/test-agent.js
