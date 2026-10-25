@@ -169,10 +169,10 @@ setTimeout(() => {
 
         // ---- 测试 7：AI 助手（D1 编排层 UI）----
         check('MediClearAgent 已加载且工具白名单 6 个', !!window.MediClearAgent && window.MediClearAgent.TOOLS.length === 6);
-        check('导航含 AI 助手入口', $('.nav-link').length === 6 &&
-            $('.nav-link').some(a => a.getAttribute('href') === '#agent'));
-        check('移动端底栏含助手入口', $('.mn-item').length === 6);
-        check('快捷问题 4 个', $('#agentChips .chip').length === 4);
+        check('导航含 AI 助手入口', $$('.nav-link').length === 6 &&
+            $$('.nav-link').some(a => a.getAttribute('href') === '#agent'));
+        check('移动端底栏含助手入口', $$('.mn-item').length === 6);
+        check('快捷问题 4 个', $$('#agentChips .chip').length === 4);
 
         $('a[href="#agent"]').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
         check('点击导航切换到 AI 助手页', $('#agent').classList.contains('active'));
